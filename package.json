@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/fricksju/sistema-de-bibliotecaa.git"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
