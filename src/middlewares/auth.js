@@ -19,8 +19,10 @@ export async function authMiddleware(req, res, next) {
       return res.status(401).json({ message: "Formato inválido do token" });
     }
 
-    // Busca usuário no banco
-    const acessarUser = await prisma.user.findUnique({ where: { username } });
+    // Busca usuário no banco por USERNAME
+    const acessarUser = await prisma.users.findUnique({ 
+      where: { username: username } // Buscando por username
+    });
 
     if (!acessarUser) {
       return res.status(401).json({ message: "Usuário não encontrado" });
@@ -30,7 +32,6 @@ export async function authMiddleware(req, res, next) {
       return res.status(401).json({ message: "Senha incorreta!" });
     }
 
-  
     req.user = acessarUser;
     next();
 
